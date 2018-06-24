@@ -23,10 +23,16 @@ https://aws.amazon.com/iot-core/
 #define BIN_CA_LEN <binary CA length>
 #define AWS_ENDPOINT <"foobar.iot.region.amazonaws.com">
 #define UPDATE_TOPIC <"$aws/things/yourThingName/shadow/update">
-#define DELTA_TOPIC "$aws/things/<thingName>/shadow/updateRequest"
+#define DELTA_TOPIC "<custom shadow update request topic>"
+#define FW_UPDATE_TOPIC "<custom firmware update topic>"
+#define SOLENOID_PIN <pin number>
+#define FW_UPDATE_URL <firmware bin url>
 ```
 
 #### Upload the code with Arduino IDE
+After an initial upload of this firmware, subsequent uploads can be OTA via an
+http server. Just serve the binary file of the sketch at `FW_UPDATE_URL`
+and publish anything to the `FW_UPDATE_TOPIC`.
 
 #### Connect to the AP
 - Look for the wifi with an SSID like `ESP-<some id>`
